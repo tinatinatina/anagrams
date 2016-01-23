@@ -1,4 +1,3 @@
-Places Search
-=========
+http://wordscramble.azurewebsites.net/
 
 

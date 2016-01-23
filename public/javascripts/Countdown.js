@@ -1,3 +1,4 @@
+////GAME TIMER//////////
 
 angular.module('Countdown', [])
   .directive('timer', ['$interval', function ($interval) {

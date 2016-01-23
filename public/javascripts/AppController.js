@@ -23,6 +23,7 @@ AppController.controller('homeCTRL', ['$scope', '$http', '$document', '$timeout'
     return word;
   };
 
+  //GETS WORD OBJECT AND SCRAMBLES THE RESULT////
   var getWord = function() {
     $scope.paused = false;
     $http.get("http://api.wordnik.com:80/v4/words.json/randomWord?&minCorpusCount=0&maxCorpusCount=0&minDictionaryCount=1&maxDictionaryCount=-1&minLength=5&maxLength=7&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5")
@@ -48,6 +49,7 @@ AppController.controller('homeCTRL', ['$scope', '$http', '$document', '$timeout'
   var checkWord = function() {
     var wordToCheck = $scope.wordInProgress.join('').toUpperCase();
 
+    ///INCREASES POINTS AND GETS NEW WORD///////
     var getPoint = function() {
       $scope.points ++;
       $scope.correctAnswer = true;
@@ -61,6 +63,7 @@ AppController.controller('homeCTRL', ['$scope', '$http', '$document', '$timeout'
       getPoint();
     }
     else{
+      ///CHECK API TO SEE IF ENTRY IS A VALID WORD/////
       $http.get("http://api.wordnik.com:80/v4/words.json/search/"+wordToCheck+"?caseSensitive=false&minCorpusCount=5&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=1&maxLength=-1&skip=0&limit=10&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5")
       .success(function (response) {
         if(response.totalResults > 0){
@@ -77,10 +80,11 @@ AppController.controller('homeCTRL', ['$scope', '$http', '$document', '$timeout'
         }
       });
     }
-  }
+  };
 
+////SETS GAME UP AGAIN/////////
   $scope.playAgain = function() {
-    $scope.date = new Date(Date.now() + .1 *60000).toString();
+    $scope.date = new Date(Date.now() + 60000).toString();
     $scope.showModal = false;
     $scope.points = 0;
     getWord();
@@ -88,6 +92,7 @@ AppController.controller('homeCTRL', ['$scope', '$http', '$document', '$timeout'
 
   getWord();
 
+////ALLOWS FOR KEYBOARD FUNCTIONALITY //////////
   $document.bind("keydown", function (event) {
     var code = (event.keyCode ? event.keyCode : event.which);
     var letter = String.fromCharCode(code).toLowerCase();
@@ -100,7 +105,6 @@ AppController.controller('homeCTRL', ['$scope', '$http', '$document', '$timeout'
         checkWord();
       }
     }
-    
     if(code === 8){
       if($scope.wordInProgress.length > 0){
         $scope.scrambledWord.push($scope.wordInProgress.pop());
