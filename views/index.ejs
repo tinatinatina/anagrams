@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="AngApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Word Scramble</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="libs/angular.min.js"></script>
+    <script src="libs/angular-route.js"></script>
+    <script src="libs/ui-bootstrap-tpls-0.10.0.min.js"></script>
+
+    <script src='javascripts/angApp.js'></script> 
+    <script src='javascripts/AppController.js'></script>
+    <script src='javascripts/Countdown.js'></script>
+
+  </head>
+  <body ng-controller="homeCTRL">
+    <H1>Word Scramble</H1>
+    <div class="word" ng-hide="paused">
+      <div  class="unscrambled letter" ng-class="{correct: correctAnswer, wrong: wrong}" ng-repeat="letter in wordInProgress track by $index">
+        {{letter}}
+      </div>
+      <div class="scrambled letter" ng-repeat="letter in scrambledWord track by $index">
+        {{letter}}
+      </div>
+    </div>  
+    <div ng-hide="paused" class="score-line">
+      <div class="button" ng-click="shuffle(scrambledWord)" ng-hide="paused">shuffle</div>
+      <div class="button" ng-click="pass()" ng-hide="paused">pass</div>
+      <div class="score">
+        <span class="label">time: </span> 
+        <timer date="{{date}}" show-modal="showModal" paused="paused"></timer>  |
+      </div>
+      <div class="score"><span class="label">score: </span>{{points}}  |</div>
+      <div class="score"><span class="label">high score: </span>{{highScore}}</div>
+    </div>
+    <div class="overlay" ng-show="showModal"></div>
+    <div class="game-over-modal" ng-show="showModal">
+      <div class="total-score">You got {{points}} points!</div>
+      <button ng-click="playAgain()">Try Again</button>
+    </div>
+  </body>
+</html>

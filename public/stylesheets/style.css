@@ -1,0 +1,111 @@
+body {
+  background: #ce9fd4;
+  color: #582a5e;
+  padding: 20px;
+  padding-left: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  height: 100%;
+}
+h1 {
+  margin: 30px 10px;
+}
+.word {
+  top: 30%;
+  position: relative;
+  height: 80px;
+  margin-bottom: 60px;
+  font-weight: 800;
+  font-size: 60px;
+  text-align: center;
+  display: inline;
+  margin: 5px 5px;
+}
+.unscrambled {
+  color: #ce9fd4;
+  background: #fff;
+}
+.scrambled {
+  color: #b977c2;
+  background: #ead6ec;
+}
+.letter {
+  display: inline-block;
+  height: 80px;
+  line-height: 80px;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 4px;
+  min-width: 80px;
+  margin: 0 5px;
+}
+.correct {
+  color: white;
+  background-color: #43AA8B;
+}
+.wrong {
+  background-color: #DB504A;
+  color: white;
+}
+.button {
+  color: #ead6ec;
+  background-color: #b977c2;
+  text-align: center;
+  border-radius: 4px;
+  display: inline-block;
+  padding: 5px;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: #ead6ec;
+  color: #b977c2;
+}
+.score-line {
+  margin: 10px;
+}
+.score {
+  display: inline-block;
+}
+.label {
+  color: #582a5e;
+}
+.game-over-modal {
+  border-radius: 4px;
+  left: 50%;
+  top: 20%;
+  text-align: center;
+  margin-left: -230px;
+  padding: 60px 0;
+  width: 460px;
+  background: #fff;
+  position: fixed;
+}
+.total-score {
+  margin-bottom: 5px;
+  color: #582a5e;
+  text-align: center;
+  font-weight: 800;
+  font-size: 30px;
+}
+.game-over-modal button {
+    color: #b977c2;
+    border: none;
+    background: #ead6ec;
+    padding: 20px 60px;
+    border-radius: 4px;
+    transition: 0.3s all;
+    margin-top: 30px;
+    font-weight: 800;
+    cursor: pointer;
+    font-size: 20px;
+}
+.overlay {
+    background: black;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    opacity: .3;
+}
