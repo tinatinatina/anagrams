@@ -10,8 +10,7 @@ AppController.controller('homeCTRL', ['$scope', '$http', '$document', '$timeout'
   $scope.highScore = 0;
   $scope.showModal = false;
   $scope.paused = false;
-
-  $scope.date = new Date(Date.now() + 60000).toString();
+  $scope.date;
 
   var scrambleWord = function(word) {
     for (var i = word.length - 1; i > 0; i--) {
@@ -89,8 +88,6 @@ AppController.controller('homeCTRL', ['$scope', '$http', '$document', '$timeout'
     $scope.points = 0;
     getWord();
   };
-
-  getWord();
 
 ////ALLOWS FOR KEYBOARD FUNCTIONALITY //////////
   $document.bind("keydown", function (event) {

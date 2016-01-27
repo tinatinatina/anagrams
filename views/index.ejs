@@ -15,28 +15,43 @@
   </head>
   <body ng-controller="homeCTRL">
     <H1>Word Scramble</H1>
-    <div class="word" ng-hide="paused">
-      <div  class="unscrambled letter" ng-class="{correct: correctAnswer, wrong: wrong}" ng-repeat="letter in wordInProgress track by $index">
-        {{letter}}
+    <div class="game">
+      <div class="word" ng-hide="paused">
+        <div  class="unscrambled letter" ng-class="{correct: correctAnswer, wrong: wrong}" ng-repeat="letter in wordInProgress track by $index">
+          {{letter}}
+        </div>
+        <div class="scrambled letter" ng-repeat="letter in scrambledWord track by $index">
+          {{letter}}
+        </div>
+      </div>  
+      <div ng-hide="paused || !startGame" class="score-line">
+        <div class="button" ng-click="shuffle(scrambledWord)" ng-hide="paused">shuffle</div>
+        <div class="button" ng-click="pass()" ng-hide="paused">pass</div>
+        <div class="score">
+          <span class="label">time: </span> 
+          <timer date="{{date}}" show-modal="showModal" paused="paused"></timer>  |
+        </div>
+        <div class="score"><span class="label">score: </span>{{points}}  |</div>
+        <div class="score"><span class="label">high score: </span>{{highScore}}</div>
       </div>
-      <div class="scrambled letter" ng-repeat="letter in scrambledWord track by $index">
-        {{letter}}
+      <div class="overlay" ng-show="showModal || !startGame"></div>
+
+      <div class="modal start" ng-hide="startGame">
+        <h3>How to play:</h3>
+        <div class="instructions">Use the keyboard to unscramble as many words as possible in one minute.</div>
+        <div>
+          <div class="button">shuffle</div> to shuffle the remaining letters
+        </div>
+        <div>
+          <div class="button">pass</div> to move on to the next word
+        </div>
+        <button ng-click="playAgain(); startGame = true">Start Game</button>
       </div>
-    </div>  
-    <div ng-hide="paused" class="score-line">
-      <div class="button" ng-click="shuffle(scrambledWord)" ng-hide="paused">shuffle</div>
-      <div class="button" ng-click="pass()" ng-hide="paused">pass</div>
-      <div class="score">
-        <span class="label">time: </span> 
-        <timer date="{{date}}" show-modal="showModal" paused="paused"></timer>  |
+
+      <div class="modal end" ng-show="showModal">
+        <div class="total-score">You got {{points}} points!</div>
+        <button ng-click="playAgain()">Try Again</button>
       </div>
-      <div class="score"><span class="label">score: </span>{{points}}  |</div>
-      <div class="score"><span class="label">high score: </span>{{highScore}}</div>
-    </div>
-    <div class="overlay" ng-show="showModal"></div>
-    <div class="game-over-modal" ng-show="showModal">
-      <div class="total-score">You got {{points}} points!</div>
-      <button ng-click="playAgain()">Try Again</button>
     </div>
   </body>
 </html>

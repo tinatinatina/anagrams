@@ -1,15 +1,20 @@
 body {
   background: #ce9fd4;
   color: #582a5e;
-  padding: 20px;
-  padding-left: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   font-weight: 600;
   font-size: 20px;
   height: 100%;
+  width: 100%;
+  text-align: center;
+  margin: 0px;
+}
+.game {
+  width: 100%;
+  text-align: center;
 }
 h1 {
-  margin: 30px 10px;
+  margin: 30px 0px;
 }
 .word {
   top: 30%;
@@ -20,7 +25,6 @@ h1 {
   font-size: 60px;
   text-align: center;
   display: inline;
-  margin: 5px 5px;
 }
 .unscrambled {
   color: #ce9fd4;
@@ -56,13 +60,14 @@ h1 {
   display: inline-block;
   padding: 5px;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 .button:hover {
   background-color: #ead6ec;
   color: #b977c2;
 }
 .score-line {
-  margin: 10px;
+  margin: 20px;
 }
 .score {
   display: inline-block;
@@ -70,10 +75,10 @@ h1 {
 .label {
   color: #582a5e;
 }
-.game-over-modal {
+.modal {
   border-radius: 4px;
   left: 50%;
-  top: 20%;
+  top: 15%;
   text-align: center;
   margin-left: -230px;
   padding: 60px 0;
@@ -88,17 +93,23 @@ h1 {
   font-weight: 800;
   font-size: 30px;
 }
-.game-over-modal button {
-    color: #b977c2;
-    border: none;
-    background: #ead6ec;
-    padding: 20px 60px;
-    border-radius: 4px;
-    transition: 0.3s all;
-    margin-top: 30px;
-    font-weight: 800;
-    cursor: pointer;
-    font-size: 20px;
+.modal button {
+  color: #b977c2;
+  border: none;
+  background: #ead6ec;
+  padding: 20px 60px;
+  border-radius: 4px;
+  transition: 0.3s all;
+  margin-top: 30px;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 20px;
+}
+.start {
+  padding: 30px 15px;
+}
+.instructions {
+  margin-bottom: 20px;
 }
 .overlay {
     background: black;
